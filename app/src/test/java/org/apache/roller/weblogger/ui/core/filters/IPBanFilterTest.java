@@ -23,8 +23,9 @@ public class IPBanFilterTest {
         ServletResponse servletResponse = mock(HttpServletResponse.class);
         FilterChain filterChain = mock(FilterChain.class);
 
-        IPBanList ipBanList = mock(IPBanList.class);
-        when(filter.getIPBanListInstance()).thenReturn(ipBanList);
+        final String remoteAddress = "http://any.remote.org";
+        when(servletRequest.getRemoteAddr()).thenReturn(remoteAddress);
+        when(filter.isBanned(remoteAddress)).thenReturn(true);
 
         //When
         filter.doFilter(servletRequest, servletResponse, filterChain);
