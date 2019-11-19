@@ -30,4 +30,23 @@ public class IPBanFilterTest {
         verify(filter).isBanned(remoteAddress);
     }
 
+    @Test
+    public void doFilter_notBanned() throws Exception {
+        //Given
+        IPBanFilter filter = spy(new IPBanFilter());
+        HttpServletRequest servletRequest = mock(HttpServletRequest.class);
+        HttpServletResponse servletResponse = mock(HttpServletResponse.class);
+        FilterChain filterChain = mock(FilterChain.class);
+
+        final String remoteAddress = "http://any.remote.org";
+        when(servletRequest.getRemoteAddr()).thenReturn(remoteAddress);
+        when(filter.isBanned(remoteAddress)).thenReturn(false);
+
+        //When
+        filter.doFilter(servletRequest, servletResponse, filterChain);
+
+        //Then
+        verify(filterChain).doFilter(servletRequest, servletResponse);
+    }
+
 }
