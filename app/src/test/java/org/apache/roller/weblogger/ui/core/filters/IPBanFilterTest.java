@@ -11,7 +11,7 @@ import static org.mockito.Mockito.*;
 public class IPBanFilterTest {
 
     @Test
-    public void x() throws Exception {
+    public void doFilter_banned() throws Exception {
         //Given
         IPBanFilter filter = spy(new IPBanFilter());
         HttpServletRequest servletRequest = mock(HttpServletRequest.class);
