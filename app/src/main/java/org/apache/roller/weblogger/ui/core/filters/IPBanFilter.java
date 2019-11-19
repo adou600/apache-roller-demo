@@ -55,7 +55,7 @@ public class IPBanFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
         
         // check if client is allowed
-        if(IPBanList.getInstance().isBanned(request.getRemoteAddr())) {
+        if(getIPBanListInstance().isBanned(request.getRemoteAddr())) {
             log.debug("BANNED "+request.getRemoteAddr());
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
             return;
@@ -63,8 +63,13 @@ public class IPBanFilter implements Filter {
             chain.doFilter(request, response);
         }
     }
-    
-    
+
+    private IPBanList getIPBanListInstance() {
+
+        return IPBanList.getInstance();
+    }
+
+
     public void destroy() {}
     
 }
