@@ -2,10 +2,11 @@ package org.apache.roller.weblogger.ui.core.filters;
 
 import org.junit.Test;
 
-import javax.servlet.ServletException;
-import java.io.IOException;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 
-import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
 
 public class IPBanFilterTest {
 
@@ -13,9 +14,12 @@ public class IPBanFilterTest {
     public void x() throws Exception {
         //Given
         IPBanFilter filter = new IPBanFilter();
+        ServletRequest servletRequest = mock(ServletRequest.class);
+        ServletResponse servletResponse = mock(ServletResponse.class);
+        FilterChain filterChain = mock(FilterChain.class);
 
         //When
-        filter.doFilter(null, null, null);
+        filter.doFilter(servletRequest, servletResponse, filterChain);
 
         //Then
         //TODO
