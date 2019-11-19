@@ -64,7 +64,8 @@ public class IPBanFilter implements Filter {
         }
     }
 
-    private IPBanList getIPBanListInstance() {
+    //visible for testing
+    IPBanList getIPBanListInstance() {
 
         return IPBanList.getInstance();
     }
