@@ -23,7 +23,7 @@
         <testIndexDir>${project.build.testOutputDirectory}${file.separator}index</testIndexDir>
         <testPlanetCache>${project.build.testOutputDirectory}${file.separator}planetcache</testPlanetCache>
         <lucene.version>4.9.0</lucene.version>
-        <spring.version>4.0.6.RELEASE</spring.version>
+        <spring.version>4.2.7.RELEASE</spring.version>
         <spring.security.version>3.2.5.RELEASE</spring.security.version>
     </properties>
 
